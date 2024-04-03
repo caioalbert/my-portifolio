@@ -24,6 +24,26 @@ const Hero = () => {
     border: `1px solid ${theme.palette.primary.contrastText} `
   }));
 
+  const handleDownloadCV = () => {
+    // URL do arquivo a ser baixado
+    const fileUrl = '/curriculo.pdf';
+    // Criando um link temporário
+    const link = document.createElement('a');
+    link.href = fileUrl;
+    // Definindo o nome do arquivo
+    link.setAttribute('download', 'curriculum-caio.pdf');
+    // Adicionando o link ao corpo do documento
+    document.body.appendChild(link);
+    // Simulando um clique no link para iniciar o download
+    link.click();
+    // Removendo o link do corpo do documento
+    document.body.removeChild(link);
+  };
+
+  const handleContactMe = () => {
+    window.location.href = 'mailto:caioalberto2104@gmail.com';
+  };
+
   return (
     <>
       <StyledHero>
@@ -44,13 +64,13 @@ const Hero = () => {
               <Typography color="primary.contrastText" variant="h2" textAlign="center">I' am a Software Engineer</Typography>
               <Grid container display="flex" justifyContent="center" spacing={3} pt={2}>
                 <Grid item  xs={12} md={4} display="flex" justifyContent="center">
-                  <StyledButton>
+                  <StyledButton onClick={handleDownloadCV}>   
                   <DownloadIcon/>
                     <Typography>Download CV</Typography>
                   </StyledButton>
                 </Grid>
                 <Grid item xs={12} md={4} display="flex" justifyContent="center">
-                  <StyledButton>
+                  <StyledButton onClick={handleContactMe}>
                     <MailOutlineIcon/>
                     <Typography>Contact Me</Typography>
                   </StyledButton>
